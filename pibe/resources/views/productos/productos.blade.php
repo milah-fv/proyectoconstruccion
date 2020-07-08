@@ -1,5 +1,8 @@
 @extends('maestra-cliente.maestracliente')
 @section('titulo', 'El Pibe')
+@section('coupon')
+@include('coupon')
+@endsection
 @section ('centro')
     
         <!-- Start Our ShopSide Area -->
@@ -15,7 +18,7 @@
                                 <h4 class="section-title-4">Categorias</h4>
                                 <ul class="sidebar__list">
                                   @foreach($categories as $category)
-                                    <li><a href="{{ url('/productos')}}">{{ $category->name}} <span>{{ $category->products->count() }}</span></a></li>
+                                    <li><a href="{{ url("/productos/$category->slug") }}">{{ $category->name}} <span>{{ $category->products->count() }}</span></a></li>
                                     @if($loop->iteration == 8)
                                     <h2 class="text-see-more" data-toggle="collapse" data-target="#CategoriesCollapse">Ver más...</h2>
                                     <div class="collapse " id="CategoriesCollapse">
@@ -32,7 +35,7 @@
                                 <ul class="sidebar__list">
                                   @foreach($colors as $color)
                                     <li class="black">
-                                      <a href="{{ url('/productos')}}">
+                                      <a href="{{ url("/productos/color/$color->id") }}">
                                         <i style="color:{{ $color->color }}" class="zmdi zmdi-circle"></i>
                                         <span>{{ $color->products->count() }}</span>
                                       </a>
@@ -52,7 +55,7 @@
                                 <h4 class="section-title-4">filtrar por talla</h4>
                                 <ul class="sidebar__list">
                                     @foreach($sizes as $size)
-                                      <li><a href="{{ url('/productos')}}">{{ $size->name }} <span>{{ $size->products->count() }}</span></a></li>
+                                      <li><a href="{{ url("/productos/talla/$size->name") }}">{{ $size->name }} <span>{{ $size->products->count() }}</span></a></li>
                                        @if($loop->iteration == 8)
                                             <h2 class="text-see-more" data-toggle="collapse" data-target="#SizesCollapse">Ver más...</h2>
                                             <div class="collapse " id="SizesCollapse">
@@ -75,9 +78,11 @@
                                         <div class="order-single-btn">
                                             <select class="select-color selectpicker">
                                               <option>Ordenar por los mas nuevos</option>
+                                           
                                               <option>Actualizados</option>
                                               <option>Nombre</option>
                                               <option>Categoría</option>
+                                           
                                             </select>
                                         </div>
                                         <div class="shp__pro__show">

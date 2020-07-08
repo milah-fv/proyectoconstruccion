@@ -24,7 +24,7 @@ class CheckEmptyCart
         }
         else if(!Auth()->user()->verifiedData())
         {
-            return redirect('/');
+            return redirect('/cuenta/completarPerfil');
         }
         return $next($request);
     }

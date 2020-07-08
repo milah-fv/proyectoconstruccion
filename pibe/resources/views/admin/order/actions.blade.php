@@ -1,0 +1,2 @@
+<a href="{{ url("/admin/orders/$id/edit") }}" style="margin: 0px 10px" title="Editar"> <i class="icon icon-pencil text-inverse m-r-10"></i> </a>
+<a href="{{ url("/admin/orders/pdf/$id") }}" title="Generar Comprobante de Pago"> <i class="icon icon-docs text-inverse m-r-10 text-success"></i> </a>

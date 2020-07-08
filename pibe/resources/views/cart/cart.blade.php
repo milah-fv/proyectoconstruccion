@@ -1,6 +1,10 @@
 @extends('maestra-cliente.maestracliente')
 @section('titulo', 'Carrito de Compras')
+@section('coupon')
+@include('coupon')
+@endsection
 @section ('centro')
+
 
         <div class=" text-center">
             <h2 class="bradcaump-title">Carrito de Compras</h2>
@@ -16,17 +20,18 @@
         <div class="cart-main-area ptb--100 bg__white">
 
         @if($cart->isEmpty())
-            <div class="text-center">
-                <i class="cart-empty-i ti-shopping-cart"></i> 
-                <h2 class=" pt--20">Aún no tienes productos en tu carrito</h2> 
-                <hr>
-                <p>Lo mejor para tu bebé, solo aqui</p><br>
-                <a class="htc__btn shop__now__btn" href="{{ url('productos') }}">Ir de Compras</a>
-            </div>
+        <div class="text-center">
+            <i class="cart-empty-i ti-shopping-cart"></i> 
+            <h2 class=" pt--20">Aún no tienes productos en tu carrito</h2> 
+            <hr>
+            <p>Lo mejor para tu bebé, solo aqui</p><br>
+            <a class="htc__btn shop__now__btn" href="{{ url('productos') }}">Ir de Compras</a>
+        </div>
         @else 
             <div class="container cart-form">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
+                        
                         <form action="{{ url('/editarCarrito') }}" method="post" >
                             @csrf               
                             <div class="table-content table-responsive">
@@ -79,21 +84,12 @@
                                         <input name="_method" type="hidden" value="PUT">
                                         <input type="submit" value="Actualizar carrito" /> 
                                         <a href="{{ url('/productos') }}">Continuar Comprando</a>
-                                    </div> 
-                                    </form> 
-                                    <div class="coupon" >
-                                        <h3>cupón de descuento</h3>
-                                        <p>Ingresa el código del cupón, si tienes alguno</p>
-                                        <form action="" method="">
-                                            {{ csrf_field() }}
-                                            <input type="text" placeholder="Código del cupón" name="coupon_code" id="coupon_code" maxlength="15" />
-                                            <input type="submit" value="Aplicar Cupón" />
-                                        </form>
                                     </div>
                                 </div>
                                
                                 <div class="col-md-5 col-sm-6 col-xs-12">
                                     <div class="cart_totals">
+                                        
                                         <h2>Total del Carrito</h2>
                                         <table>
                                             <tbody>
@@ -101,11 +97,38 @@
                                                     <th>Sub Total</th>
                                                     <td><span class="amount" style="font-size:14px">S/.{{ $total }}</span></td>
                                                 </tr>
+                                                @if (session()->has('coupon'))
+                                                <tr class="cart-subtotal">
+                                                    <th>
+                                                        Descuento ( {{session()->get('coupon')['name'] }} ) 
+                                                        <form action="{{ route('customer.coupon.destroy')}}" method="POST" style="display:inline; ">
+                                                        {{ csrf_field() }}  
+                                                        {{ method_field('delete') }}
+                                                        <button class="btn btn-default" type="submit" style="border-radius:10px; padding: 0px 5px; margin-left: 5px"> Quitar</button>
+                                                         </form>
+                                                    </th>
+
+                                                    <td>
+                                                        <span class="amount" style="font-size:14px"> - S/.{{ number_format($discount, 2) }}</span>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="cart-subtotal" style="border-top: solid 1px #29a329;">
+                                                    <th>
+                                                        Nuevo Sub Total
+                                                    </th>
+                                                    <td>
+                                                        <span class="amount" style="font-size:14px"> S/.{{ number_format($newSubtotal, 2) }}</span>
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                                
                                                 <tr class="shipping">
                                                     <th>¿Envío?</th>
                                                     <td>
                                                         <ul id="shipping_method">
                                                             <li>
+                                                               
                                                                 <label>
                                                                 <input id="check_shipping" type="checkbox" /> 
                                                                     Tarifa plana: <span id="amount_shipping" data-val="10" class="amount" style="margin-left: 10px; font-size:14px">S/.10.00</span>
@@ -118,18 +141,23 @@
                                                 <tr class="order-total">
                                                     <th>Total</th>
                                                     <td>
+                                                        <!-- <strong><span class="amount cart_total_val" data-val="{{ $total }}" >S/.{{ $total }}</span></strong> -->
                                                         <strong><span class="amount cart_total_val" data-val="{{ $newSubtotal }}" >S/.{{ number_format($newSubtotal, 2) }}</span></strong>
                                                     </td>
                                                 </tr>                                             
                                             </tbody>
                                         </table> 
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="{{ url('/') }}"><i class="zmdi zmdi-check-circle" ></i>  Proceder a Comprar</a>
+                                            <a href="{{ url('checkout') }}"><i class="zmdi zmdi-check-circle" ></i>  Proceder a Comprar</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        
+
                         <hr>
+                        
+
                     </div>
                 </div>
             </div>
@@ -137,25 +165,26 @@
         </div>
         <!-- cart-main-area end -->
 
+
 @endsection
 
 @section ('scripts')
 <script>
-    $(document).on('click','#check_shipping',function() 
+$(document).on('click','#check_shipping',function() 
+{  
+    var shipping = $('#amount_shipping').data('val').toFixed(2);
+    var total = $('.cart_total_val').attr('data-val');  
+    total = parseFloat(total.replace(/,/g, '')).toFixed(2);
+    
+    if($("#check_shipping").is(':checked')) 
+    { 
+       pTotal = parseFloat(shipping) + parseFloat(total);
+       $('.cart_total_val').text('S/.'+ pTotal.toFixed(2));
+    } 
+    else 
     {  
-        var shipping = $('#amount_shipping').data('val').toFixed(2);
-        var total = $('.cart_total_val').attr('data-val');  
-        total = parseFloat(total.replace(/,/g, '')).toFixed(2);
-        
-        if($("#check_shipping").is(':checked')) 
-        { 
-           pTotal = parseFloat(shipping) + parseFloat(total);
-           $('.cart_total_val').text('S/.'+ pTotal.toFixed(2));
-        } 
-        else 
-        {  
-            $('.cart_total_val').text('S/.'+ total);
-        }  
-    });
+        $('.cart_total_val').text('S/.'+ total);
+    }  
+});
 </script>
 @endsection

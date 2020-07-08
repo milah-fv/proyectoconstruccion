@@ -185,7 +185,7 @@
                     </ul>
                     <ul class="shopping__btn {{ $cart->isEmpty()? 'hidden' : '' }}">
                         <li><a href="{{ url('/carrito') }}">Ver Carrito</a></li>
-                        <li class="shp__checkout"><a href="{{ url('/carrito') }}">Procesar compra</a></li>                        
+                        <li class="shp__checkout"><a href="{{ url('checkout') }}">Procesar compra</a></li>                        
                     </ul>
                     <div class="{{ $cart->isEmpty()? '' : 'hidden' }} cart-empty">
                         <div class="text-center">

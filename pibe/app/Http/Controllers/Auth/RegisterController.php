@@ -64,6 +64,8 @@ class RegisterController extends Controller
             'email.max' => 'El máximo permitido el 150 caracteres.',
             'password.confirmed' => 'Las contraseñas no coinciden',
             'password.required' => 'El campo contraseña es obligatorio.'
+            // 'password.min' => 'La contraseña debe tener minimamente 6 caracteres'
+            // 'password.max' => 'El máximo permitido el 150 caracteres.',
         ];
 
         return Validator::make($data, [

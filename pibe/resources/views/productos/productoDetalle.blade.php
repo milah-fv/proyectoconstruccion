@@ -1,5 +1,8 @@
 @extends('maestra-cliente.maestracliente')
 @section('titulo', 'El Pibe')
+@section('coupon')
+@include('coupon')
+@endsection
 @section ('centro')
   
         <!-- Start Product Details -->
@@ -15,6 +18,7 @@
                             {{ $product->category->name }}
                             <i class="ti-angle-right" aria-hidden="true"></i>
                         </a>
+
                         <span>
                             {{ $product->name }}
                         </span>
@@ -61,6 +65,16 @@
                                 <div class="pro__detl__title">
                                     <h2>{{ $product->name }}</h2>
                                 </div>
+                                <!-- <div class="pro__dtl__rating">
+                                    <ul class="pro__rating">
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                        <li><span class="ti-star"></span></li>
+                                    </ul>
+                                    <span class="rat__qun">(Based on 0 Ratings)</span>
+                                </div> -->
                                 <div class="pro__details">
                                     <p>{{ $product->features }}</p>
                                 </div>
@@ -76,6 +90,7 @@
                                     <h2 class="title__5">Escoger color</h2>
                                     <ul class="pro__choose__color">
                                         <li class="red"><a href="#"><i style="color:{{ $product->color->color }}" class="zmdi zmdi-circle"></i></a></li>
+                                        
                                     </ul>
                                 </div>
                                 @if(!$product->sizes->isEmpty())
@@ -105,6 +120,7 @@
                                                     </div>
                                                     @csrf 
                                                     <input class="num-product" readonly min="1" max="" type="number" value="1" id="product-quantity-get">
+
                                                     <div class="btn-num-product-up">
                                                         <i class="ti-angle-right"></i>
                                                     </div>
@@ -113,6 +129,7 @@
                                         </ul>
                                     </div>
                                 </div>
+                                
                                 @if($product->stock > 0)
                                 <ul class="pro__dtl__btn">
                                     <li class="buy__now__btn">
@@ -152,6 +169,16 @@
                                         <h2 class="title__6">Detalles</h2>
                                         <p>{{ $product->description}}</p>
                                     </div>
+                                    <!--
+                                    <div class="pro__feature">
+                                        <h2 class="title__6">Características</h2>
+                                        <ul class="feature__list">
+                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Duis aute irure dolor in reprehenderit in voluptate velit esse</a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
+                                        </ul>
+                                    </div> -->
                                 </div>
                             </div>
                             <!-- End Single Content -->

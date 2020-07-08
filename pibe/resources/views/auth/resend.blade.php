@@ -12,16 +12,18 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+
                         <form method="POST" action="{{ url('/confirmacion/nueva') }}">
                             @csrf
                             <h1 class="ptb--30">Reenviar el correo de confirmación</h1>
                             <h6 class="ptb--20">Ingrese su correo electrónico para reenviar las instrucciones de confirmación</h6>
                             <div class="login">
-                                <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" required >  @if ($errors->has('email'))
-                                    <span class="invalid-feedback text-danger">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" required >      
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback text-danger">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
                             </div>
                             <div class="form-group row mb-0 pt--20">
                                  <div class="contact-btn">

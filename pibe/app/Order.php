@@ -38,6 +38,11 @@ class Order extends Model
 	  	return $this->hasOne(Shipping::class);
 	}
 
+	// public function document()
+	// {
+	// 	return $this->belongsTo(Document::class);
+	// }
+
     public function products()
     {
       	return $this->belongsToMany(Product::class,'order_details')->withTimestamps()->withPivot(['quantity','size']);
@@ -50,6 +55,7 @@ class Order extends Model
         ];
 		$parameter= Crypt::encrypt($parameter);
 	
+      	//$id = md5($this->attributes['id'] . $this->attributes['created_at'] );
      	return $parameter;
     }
     
