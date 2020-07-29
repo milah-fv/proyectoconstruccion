@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form class="row"  >
+                <form method="post" action="{{ url('/checkout') }}" class="row" id="payment_end" >
                     @csrf
                     @include('cart.payment.direccionEnvio')
                     <!-- Sidebar Carrito -->
@@ -74,13 +74,27 @@
                                         &nbsp; &nbsp; &nbsp; He leído y estoy de acuerdo con los <b><a href="{{ url('/terminos_y_condiciones') }}" target="_blank">términos y condiciones </a></b> del sitio.</label>
                                     </div>
                                     <div class="contact-btn text-center pb--20">                    
-                                        <button  class="fv-btn">
+                                        <button type="submit" id="payment_sucess" class="fv-btn">
                                             Finalizar
                                         </button>                        
                                     </div>           
                                 @else
                                     <p  class="text-center">Completa tus datos</p>  
                                 @endif
+                        </div>
+                    </div>
+
+                    <!-- Fin de Sidebar Carrito -->
+                    
+                    <div class="col-md-7 pt--30">
+                        <div class="ckeckout-left-sidebar">
+                           
+                            <div class="checkout-form pb--30">
+                                <h2 class="section-title-3"><i class="ti-plus"></i> INFORMACIÓN EXTRA</h2>
+                            </div>
+                            <h6 class="col-md-12 pb--20">Si desea dejarnos un comentario acerca de su pedido, por favor, escríbalo a continuación</h6>
+                            @component('components.textarea', ['name' => 'message','title' => 'Comentario:'])
+                            @endcomponent
                         </div>
                     </div>
 
@@ -223,6 +237,7 @@
             // Mostramos JSON de objeto error en consola
             console.log(Culqi.error);
             alert(Culqi.error.user_message);
+            //alert("Error con la tarjeta ingresada, consulte con su banco. \n     La compra NO ha sido procesada");
         }
     };
 

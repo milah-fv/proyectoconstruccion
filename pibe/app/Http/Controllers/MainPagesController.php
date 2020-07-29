@@ -97,4 +97,72 @@ class MainPagesController extends Controller
       $product->color;
       return response()->json($product);
     }
+
+    public function buscarCategoria($slug)    
+    {
+          $categoryQuery = Category::SearchCategory($slug)->first();
+          $products = $categoryQuery->products()->paginate(12);
+          $products->each(function($products){
+            $products->cover_image = url($products->cover_image);
+            });
+          $categories = Category::all();
+          $colors = Color::all();
+          $sizes = Size::all();
+          $maxPrice = Product::getMaxPrice();
+
+          return view('productos.productos',[
+              'products' => $products,
+              'categories' => $categories,
+              'colors' => $colors,
+              'sizes' => $sizes,
+              'categoryQuery' => $categoryQuery,
+              'maxPrice' => $maxPrice
+          ]);
+    }
+    
+    public function buscarColor($id)    
+    {
+        $colorQuery = Color::SearchColor($id)->first();
+        $products = $colorQuery->products()->paginate(12);
+
+        $products->each(function($products){
+            $products->cover_image = url($products->cover_image);
+        });
+        
+        $categories = Category::all();
+        $colors = Color::all();
+        $sizes = Size::all();
+        $maxPrice = Product::getMaxPrice();
+
+        return view('productos.productos',[
+            'products' => $products,
+            'categories' => $categories,
+            'colors' => $colors,
+            'sizes' => $sizes,
+            'colorQuery' => $colorQuery,
+            'maxPrice' => $maxPrice
+        ]);
+    }
+
+      public function buscarTalla($name)    
+    {
+          $sizeQuery = Size::SearchSize($name)->first();
+          $products = $sizeQuery->products()->paginate(12);
+          $products->each(function($products){
+            $products->cover_image = url($products->cover_image);
+        });
+          $categories = Category::all();
+          $colors = Color::all();
+          $sizes = Size::all();
+          $maxPrice = Product::getMaxPrice();
+
+          return view('productos.productos',[
+              'products' => $products,
+              'categories' => $categories,
+              'colors' => $colors,
+              'sizes' => $sizes,
+              'sizeQuery' => $sizeQuery,
+              'maxPrice' => $maxPrice
+          ]);
+    }
 }

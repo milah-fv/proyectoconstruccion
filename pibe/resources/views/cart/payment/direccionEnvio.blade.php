@@ -64,10 +64,6 @@
                     @component('components.input', ['name' => 'order_paternal_surname','title' => 'Apellidos','col' => 'col-md-6'])
                     @endcomponent
 
-                    
-
-                   
-
                     @component('components.input', ['name' => 'order_num_document','title' => 'Numero de documento','col' => 'col-md-6'])
                     @slot('attributes')
                     onkeypress= "return soloNumeros(event)"
@@ -78,5 +74,5 @@
         <hr>
     </div>
     
-        
+    @include('cart.payment.metodoPago')       
 </div>

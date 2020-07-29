@@ -77,10 +77,11 @@
                 </table>
             </div>
         </div>
+        <!--
         <div class="card_pibe">
             <h5 class="has_arrow_card collapsed" data-toggle="collapse" data-target="#messageOrder">MENSAJES</h5>
             <div class="chat-box collapse" id="messageOrder">
-                <!--chat Row -->
+                
                 <ul class="chat-list">
                     @forelse($order->messages as $message)
                         @if(Auth::guard('web')->user()->id != $message->customer_id)
@@ -120,7 +121,7 @@
                     @endif
                 </div> 
             </div>
-        </div>
+        </div>-->
         <div class="card_pibe">
             <h5 class="pb--10 has_arrow_card collapsed" data-toggle="collapse" data-target="#typePaymentOrder">MÉTODO DE PAGO</h5>
             <h6 class="text-capitalize collapse" id="typePaymentOrder"><i class="ti-credit-card"></i> {{ $order->payment->paymentType->name }}</h6>

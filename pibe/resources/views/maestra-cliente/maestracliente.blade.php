@@ -86,6 +86,7 @@
                                     {{Auth('web')->user()->name}}  <span class="ti-user">  </span>
                                     </a> 
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li class="dropdown-item"><a href="{{ url('/profile/orders') }}">Perfil</a></li>
                                     <li class="dropdown-item" style="padding-left:0px">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Salir</a></li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

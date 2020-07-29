@@ -12,7 +12,7 @@
                 <h1>¡Su pedido se realizó exitosamente!</h1>
                 <h4 class="ft__title pt--20">¿Dudas o Consultas? No dudes en comunicarte!</h4><hr>
                 <ul class="row">
-                    <li class="col-md-4">Telefono: <br><strong>064 212205</strong></li>
+                    <li class="col-md-4">Telefono: <br><strong>930 111 111</strong></li>
                     <li class="col-md-4">Email:<br><strong>informacion@elpibeperu.com</strong></li>
                <!--      <li class="col-md-4">Titular :<br><strong>Consuelo  Rojas</strong></li> -->
                     

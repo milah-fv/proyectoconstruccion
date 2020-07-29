@@ -13,7 +13,8 @@
                     </div>
                     <ul class="list-group list-group-flush" style="margin-bottom: 0px">
                         <li class=" list-group-item  profile-items {{ Request::is('profile/data') ? 'active' : '' }}">
-                            <a class=" profile-links"  href="{{ url('/profile/data') }}">
+                            <a class=" profile-links"  href="#">
+                            <!--<a class=" profile-links"  href="{{ url('/profile/data') }}"> -->
                             <i class="ti-user"> </i>
                             Mis Datos personales
                             </a>
@@ -31,12 +32,12 @@
                             </a>
                         </li>
 
-                        <li class=" list-group-item  profile-items {{ Request::is('profile/boucher') ? 'active' : '' }}">
+                        <!-- <li class=" list-group-item  profile-items {{ Request::is('profile/boucher') ? 'active' : '' }}">
                             <a class=" profile-links"  href="{{ url('/profile/boucher') }}">
                             <i class="ti-ticket"> </i>
                             Envío de Vouchers
                             </a>
-                        </li> 
+                        </li> -->
                         <!-- <li class=" list-group-item  profile-items {{ Request::is('profile/wish_list') ? 'active' : '' }}">
                             <a class=" profile-links"  href="{{ url('/profile/wish_list') }}">
                             <i class="ti-heart"> </i>

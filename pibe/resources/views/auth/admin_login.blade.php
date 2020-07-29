@@ -60,11 +60,6 @@
                             @endif
                            
                         </div>
-
-                        <!-- <div class="custom-control custom-checkbox mt-4">
-                            <input type="checkbox" class="custom-control-input" id="login">
-                            <label class="custom-control-label" for="login">Recordar contraseña</label>
-                        </div> -->
                     </div>
                     
                     <div class="card-footer">
@@ -73,9 +68,9 @@
                                 <button type="submit" class="btn btn-success px-5">Ingresar</button>
                             </div>
 
-                            <div class="col-6">
+                            <!--<div class="col-6">
                                 <a href="{{ route('user.password.request') }}" class="btn btn-link">¿Olvidaste la contraseña?</a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     </form>

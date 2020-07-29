@@ -2,14 +2,13 @@
 
 use Faker\Generator as Faker;
 
+
 /*
 |--------------------------------------------------------------------------
-| Model Factories
+| Fábrica de Datos de Prueba de Clientes
 |--------------------------------------------------------------------------
 |
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
+| Este directorio contine la generación de datos de prueba para el Test de la clase Customer (Clientes)
 |
 */
 

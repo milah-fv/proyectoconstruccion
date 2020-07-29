@@ -8,6 +8,23 @@ use App\Product;
 
 class CartController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Clase Controlador del Carrito de Compras
+    |--------------------------------------------------------------------------
+    |
+    | En esta clase se encuentran los métodos utilizados para el funcionamiento del 
+    | carrito de compras de la aplicación.
+    |
+    */
+
+    /**
+     * Función index
+     * Función de inicio, ordena los datos para la visualización del carrito
+     * @access public
+     * Retorna la vista del carrito con los datos de las variables $products, $total, $newSubtotal,
+     * @return view 
+     */
     public function index()
     {
         $products = Cart::content();
@@ -45,7 +62,13 @@ class CartController extends Controller
         ]);
     }
 
-    
+    /**
+     * Función Store
+     * Método de almacenamiento, clasifica y almacena los productos, para ser llevados al carrito.
+     * @access public
+     * Retorna valores de parámetros para la función returnCart
+     * @return $this->returnCart 
+     */
     public function store(Request $request)
     {
         /* Search product */
@@ -110,6 +133,16 @@ class CartController extends Controller
         }            
     }
 
+    /**
+     * Función checkout
+     * Método de verificación, lleva los datos obtenidos del carrito hacia la página de checkout,
+     * donde se muestra el resúmen de compras.
+     * @access public
+     * Retorna la vista del resúmen del carrito en la página de checkout
+     * @return view vista de resúmen de la compra
+     * @param $products Producto del carrito
+     * @param $total Total del carrito
+     */
     public function checkout()
     {
         $products = Cart::content();
@@ -143,6 +176,14 @@ class CartController extends Controller
 
     }
 
+    /**
+     * Función destroy
+     * Método de eliminación, elimina un producto del carrito.
+     * @access public
+     * @param int $id Número de identificación de un ítem del carrito
+     * Retorna el total actualizado del carrito, al eliminar un ítem.
+     * @return view
+     */
     public function destroy($id)
     {
         Cart::remove($id);
@@ -150,6 +191,13 @@ class CartController extends Controller
         return response()->json($total);
     }
 
+    /**
+     * Función updateCarrito
+     * Método de actualización, actualiza la cantidad del producto en el carrito.
+     * @access public
+     * Retorna el total actualizado del carrito, al cambiar la cantidad de un ítem.
+     * @return back
+     */
     public function updateCarrito(Request $request)
     {
         foreach($request->rowId as $index => $id) 
@@ -160,7 +208,17 @@ class CartController extends Controller
         return back();
     }
 
-    
+    /**
+     * Función returnCart
+     * Método de retorno de valores del carrito
+     * @access public
+     * @param $product Objeto producto
+     * @param $request Especificaciones del producto(Talla, stock)
+     * @param $qty Cantidad del producto
+     * @param $bol Variable de prueba para aceptación o rechazo de petición
+     * Retorna el total y los datos del carrito
+     * @return $cart, $total
+     */
     public function returnCart($product,$request,$qty,$bol)
     {
         if($bol)

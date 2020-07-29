@@ -52,10 +52,10 @@
 
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-header">Cuenta</div>
-
+                <!--
                     <a href="{{ url('/admin/profile/'.Auth('user')->user()->id) }}" class="dropdown-item">
                         <i class="fa fa-user"></i> Perfil
-                    </a>      
+                    </a>    -->  
 
                     <a href="{{ route('logout') }} "  class="dropdown-item"
                                 onclick="event.preventDefault();
@@ -86,7 +86,7 @@
                         </a>
                     </li>
                     @show
-
+                <!--
                     @section('menu-pagina-principal')
                       <li class="nav-item nav-dropdown">
                         <a href="#" class="nav-link nav-dropdown-toggle">
@@ -115,15 +115,16 @@
                         </ul>
                         
                     </li>
-                    @show
-
+                    @show -->
+                   
                      @section('menu-productos')
                     <li class="nav-item nav-dropdown">
                         <a href="/admin/product" class="nav-link">
                             <i class="icon icon-grid"></i> Productos 
                         </a>
                     </li>
-                    @show
+                    @show 
+                    <!--
                      @section('menu-categorias')
                     <li class="nav-item nav-dropdown">
                         <a href="/admin/category" class="nav-link">
@@ -138,39 +139,15 @@
                         </a>
                     </li>
                     @show
+                    
                     @section('menu-reportes')
                      <li class="nav-item ">
                         <a href="/admin/reports" class="nav-link">
                             <i class="icon icon-chart"></i> Reportes 
                         </a>
                     </li>
-                    @show
+                    @show 
                     
-                   <!--  @section('menu-reportes')
-                      <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-chart"></i> Reportes <i class="fa fa-caret-left"></i>
-                        </a>
-                         @section('menu-buscar-reportes')
-                         <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="chartjs.html" class="nav-link">
-                                    <i class="icon icon-chart"></i> Buscar Reportes
-                                </a>
-                            </li>
-                        </ul>
-                        @show
-                         @section('menu-ver-graficos')
-                         <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="chartjs.html" class="nav-link">
-                                    <i class="icon icon-chart"></i> Ver Graficos
-                                </a>
-                            </li>
-                        </ul>
-                        @show
-                    </li>
-                    @show -->
                     @section('menu-clientes')
                     <li class="nav-item nav-dropdown">
                         <a href="#" class="nav-link nav-dropdown-toggle">
@@ -192,11 +169,6 @@
                         </ul>
                     </li>
                     @show
-                    <!-- <li class="nav-item ">
-                        <a href="#" class="nav-link ">
-                            <i class="icon icon-user"></i> Usuarios 
-                        </a>
-                    </li> -->
                     @section('menu-empleados')
                     <li class="nav-item ">
                         <a href="/admin/user" class="nav-link">
@@ -211,33 +183,14 @@
                             <i class="icon icon-pencil"></i> Blog 
                         </a>
                     </li>
-                     <!--  <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-pencil"></i> Blog <i class="fa fa-caret-left"></i>
-                        </a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="/admin/posts" class="nav-link">
-                                    <i class="icon icon-pencil"></i> Posts
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="/admin/tag" class="nav-link">
-                                    <i class="icon icon-pencil"></i> Etiquetas
-                                </a>
-                            </li>
-                        </ul>
-                        
-                    </li> -->
+                     
                     @show
                     <li class="nav-item ">
                         <a  class="nav-link">
                            
                         </a>
                     </li>
-                    
+                    -->
                 </ul>
             </nav>
         </div>
@@ -265,25 +218,6 @@
                     </div>
                 @endif
 
-                <!-- @if (count($errors))
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="alert alert-danger alert-rounded">
-                                   <ul>
-                                       @foreach ($errors->all() as $error)
-                                       <li>
-                                           {{$error}}
-                                       </li>
-                                       @endforeach
-                                   </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endif -->
-
-               <!-- Aqui va la aplicación -->
                 @section('centro')
 
                 @show

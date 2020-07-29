@@ -37,8 +37,15 @@
                 <div class="check"><div class="inside"></div></div>
                 <div id="collapse2" class="panel-collapse collapse in">
                     <div class="panel-body">
-                    <p><b>NOTA:</b><br>Tiene hasta 48 horas para efectuar el pago, puede utilizar la Banca por Internet BBVA Banco Continental, Agentes BBVA Banco Continental (hasta S/ 800.00) y Oficinas BBVA Banco Continental a Nivel nacional con tu número de pedido.</p>
-                    <p>Debe de enviar el voucher del deposito bancario escaneado o fotografiado (letra legible), desde su perfil en la sección <b>"Enviar Voucher"</b> en nuestra pagina web. (Tambien puede encontrarla <a href="{{ url('/profile/boucher') }}" target="_blank"> Haciendo click Aqui)</a>.</p>
+                    <p><b>NOTA:</b><br>Tiene hasta 48 horas para efectuar el pago, puede utilizar la Banca por Internet del BCP o BBVA Banco Continental, Agentes BCP o BBVA Banco Continental
+                     y Oficinas BCP o BBVA Banco Continental a Nivel nacional con tu número de pedido, tambien puede usar aplicativos como Yape del BCP.  <br><br>
+                    <img src="{{ asset('cliente_assets/images/yape.png')}}" width="100px" style="margin: 0px 10px"> 
+                    <img src="{{ asset('cliente_assets/images/bcp.png')}}" width="100px" style="margin: 0px 10px"> 
+                    <img src="{{ asset('cliente_assets/images/bbva.png')}}" width="100px" style="margin: 0px 10px"> 
+                    
+                    <br>
+                    </p>
+                    <p>Debe de enviar el voucher del deposito bancario escaneado o fotografiado (letra legible), al número de WhatsApp que se le indicará después de presionar el botón "Finalizar".</p>
                     <!-- <p>Y si no estás satisfecho con tu producto, puedes devolverlo completamente gratis dentro de los 10 días naturales posteriores a la entrega (se aplican <a href="{{ url('/terminos_y_condiciones') }}">términos y condiciones</a>).</p></div> -->
                 </div>
                  <!--  -->
